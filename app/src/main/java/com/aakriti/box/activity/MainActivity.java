@@ -1,7 +1,9 @@
-package com.aakriti.box;
+package com.aakriti.box.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.aakriti.box.R;
 
 public class MainActivity extends AppCompatActivity {
 

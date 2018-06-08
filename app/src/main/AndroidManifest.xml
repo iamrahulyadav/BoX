@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.aakriti.box.activity.ActivitySplash"
+            android:name="com.aakriti.box.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
@@ -29,24 +29,24 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.ActivitySignin"
+            android:name=".activity.SigninActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.ActivityRegister"
+            android:name=".activity.RegistrationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.ActivityRoomAccess"
+            android:name=".activity.DashboardActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.ActivityChangePass"
+            android:name=".activity.ChangePassActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.ActivityAddRoom"
+            android:name=".activity.AddRoomActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
@@ -56,23 +56,23 @@
             android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.ActivitySetUpRoom"
+            android:name=".activity.SetupRoomActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
-            android:name=".activity.ActivityCreateAppliance"
+            android:name=".activity.CreateApplianceActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.ActivityManageRoom"
+            android:name=".activity.ManageRoomActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
-        <receiver android:name=".activity.ActivityAddRoom$PairingRequest">
+        <receiver android:name=".activity.AddRoomActivity$PairingRequest">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.PAIRING_REQUEST" />
                 <action android:name="android.bluetooth.device.action.PAIRING_CANCEL" />

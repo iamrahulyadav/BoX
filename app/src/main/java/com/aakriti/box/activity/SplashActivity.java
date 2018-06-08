@@ -16,7 +16,7 @@ import com.aakriti.box.util.Util;
  * Created by ritwik on 02-05-2018.
  */
 
-public class ActivitySplash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     private TextView tv_splash, tv_subText;
     private Typeface custom_font;
@@ -30,7 +30,7 @@ public class ActivitySplash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
-        mContext = ActivitySplash.this;
+        mContext = SplashActivity.this;
 
         //Log.v(null, null);
         tv_splash = (TextView) findViewById(R.id.tv_splash);
@@ -109,11 +109,11 @@ public class ActivitySplash extends AppCompatActivity {
         UserClass userClass = Util.fetchUserClass(mContext);
 
         if (userClass != null && userClass.getIsLoggedin()) {
-            Intent intent = new Intent(mContext, ActivityRoomAccess.class);
+            Intent intent = new Intent(mContext, DashboardActivity.class);
             startActivity(intent);
             finish();
         } else {
-            Intent intent = new Intent(mContext, ActivitySignin.class);
+            Intent intent = new Intent(mContext, SigninActivity.class);
             startActivity(intent);
             finish();
         }

@@ -17,7 +17,7 @@ import com.aakriti.box.util.Util;
  * Created by ritwik on 03-05-2018.
  */
 
-public class ActivityRegister extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     private Context mContext;
     private EditText et_homeName, et_userName, et_password, et_confirmPassword;
@@ -25,8 +25,8 @@ public class ActivityRegister extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        mContext = ActivityRegister.this;
+        setContentView(R.layout.activity_registration);
+        mContext = RegistrationActivity.this;
 
         et_homeName = (EditText) findViewById(R.id.et_homeName);
         et_userName = (EditText) findViewById(R.id.et_userName);
@@ -44,28 +44,28 @@ public class ActivityRegister extends AppCompatActivity {
         String confirmPass = et_confirmPassword.getText().toString().trim();
 
         if (TextUtils.isEmpty(homeName)) {
-            Util.showMessageWithOk(ActivityRegister.this, "Please enter your house name");
+            Util.showMessageWithOk(RegistrationActivity.this, "Please enter your house name");
             return;
         } else if (homeName.length() < 4) {
-            Util.showMessageWithOk(ActivityRegister.this, "Home name is too short");
+            Util.showMessageWithOk(RegistrationActivity.this, "Home name is too short");
             return;
         } else if (TextUtils.isEmpty(userName)) {
-            Util.showMessageWithOk(ActivityRegister.this, "Please enter a user name");
+            Util.showMessageWithOk(RegistrationActivity.this, "Please enter a user name");
             return;
         } else if (TextUtils.isEmpty(password)) {
-            Util.showMessageWithOk(ActivityRegister.this, "Please enter a password");
+            Util.showMessageWithOk(RegistrationActivity.this, "Please enter a password");
             return;
         } else if (TextUtils.isEmpty(confirmPass)) {
-            Util.showMessageWithOk(ActivityRegister.this, "Confirm Password empty");
+            Util.showMessageWithOk(RegistrationActivity.this, "Confirm Password empty");
             return;
         } else if (password.length() < 8) {
-            Util.showMessageWithOk(ActivityRegister.this, "Password is too short");
+            Util.showMessageWithOk(RegistrationActivity.this, "Password is too short");
             return;
         } else if (!Util.isPasswordValid(password)) {
-            Util.showMessageWithOk(ActivityRegister.this, "Password should have atleast one alphabet, one number and one special character.");
+            Util.showMessageWithOk(RegistrationActivity.this, "Password should have atleast one alphabet, one number and one special character.");
             return;
         } else if (!password.equals(confirmPass)) {
-            Util.showMessageWithOk(ActivityRegister.this, "Entered Passwords do not match");
+            Util.showMessageWithOk(RegistrationActivity.this, "Entered Passwords do not match");
             return;
         }
         UserClass userClass = new UserClass();

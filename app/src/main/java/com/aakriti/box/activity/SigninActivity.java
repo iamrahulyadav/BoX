@@ -19,7 +19,7 @@ import com.aakriti.box.util.Util;
  * Created by ritwik on 2-04-2018.
  */
 
-public class ActivitySignin extends AppCompatActivity {
+public class SigninActivity extends AppCompatActivity {
 
     private EditText input_username, input_password;
     private Button btn_login, btn_register;
@@ -30,8 +30,8 @@ public class ActivitySignin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        mContext = ActivitySignin.this;
+        setContentView(R.layout.activity_signin);
+        mContext = SigninActivity.this;
         input_username = (EditText) findViewById(R.id.input_username);
         input_password = (EditText) findViewById(R.id.input_password);
         btn_login = (Button) findViewById(R.id.btn_login);
@@ -47,33 +47,33 @@ public class ActivitySignin extends AppCompatActivity {
                     String userName = input_username.getText().toString().trim();
                     String password = input_password.getText().toString().trim();
                     if (TextUtils.isEmpty(userName)) {
-                        Util.showMessageWithOk(ActivitySignin.this, "Please enter your userName");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter your userName");
                         return;
                     } else if (TextUtils.isEmpty(password)) {
-                        Util.showMessageWithOk(ActivitySignin.this, "Please enter your password");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter your password");
                         return;
                     } else if (password.length() < 8) {
-                        Util.showMessageWithOk(ActivitySignin.this, "Please enter the correct password");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct password");
                         return;
                     } else if (!userName.equalsIgnoreCase(userClass.getName())) {
-                        Util.showMessageWithOk(ActivitySignin.this, "Please enter the correct user name");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct user name");
                         return;
                     } else if (!password.contentEquals(userClass.getPassword())) {
-                        Util.showMessageWithOk(ActivitySignin.this, "Please enter the correct password");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct password");
                         return;
                     }
                     // Save AutoLogin state
                     userClass.setIsLoggedin(chbx_autoLogin.isChecked());
                     Util.saveUserClass(mContext, userClass);
                     // Credentials Verified
-                    Intent intent = new Intent(mContext, ActivityRoomAccess.class);
+                    Intent intent = new Intent(mContext, DashboardActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
 
                 } else {
 
-                    Util.showMessageWithOk(ActivitySignin.this, "Not registered!\nPlease register first.");
+                    Util.showMessageWithOk(SigninActivity.this, "Not registered!\nPlease register first.");
                 }
 
             }
@@ -82,7 +82,7 @@ public class ActivitySignin extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ActivityRegister.class);
+                Intent intent = new Intent(mContext, RegistrationActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,10 +92,10 @@ public class ActivitySignin extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (Util.fetchUserClass(mContext) != null) {
-                    Intent intent = new Intent(mContext, ActivityChangePass.class);
+                    Intent intent = new Intent(mContext, ChangePassActivity.class);
                     startActivity(intent);
                 } else {
-                    Util.showMessageWithOk(ActivitySignin.this, "Not registered!\nPlease register first.");
+                    Util.showMessageWithOk(SigninActivity.this, "Not registered!\nPlease register first.");
                 }
 
             }

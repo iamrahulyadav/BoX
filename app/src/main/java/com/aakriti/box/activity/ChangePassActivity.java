@@ -17,7 +17,7 @@ import com.aakriti.box.util.Util;
  * Created by ritwik on 03-05-2018.
  */
 
-public class ActivityChangePass extends AppCompatActivity {
+public class ChangePassActivity extends AppCompatActivity {
 
     private Context mContext;
     private EditText et_password, et_confirm_password, et_userName, et_previousPass;
@@ -37,7 +37,7 @@ public class ActivityChangePass extends AppCompatActivity {
         setContentView(R.layout.activity_change_password);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Change Password");
-        mContext = ActivityChangePass.this;
+        mContext = ChangePassActivity.this;
         et_userName = (EditText) findViewById(R.id.et_userName);
         et_previousPass = (EditText) findViewById(R.id.et_previousPass);
         et_password = (EditText) findViewById(R.id.et_password);
@@ -52,31 +52,31 @@ public class ActivityChangePass extends AppCompatActivity {
         String confirmPass = et_confirm_password.getText().toString().trim();
 
         if (TextUtils.isEmpty(userName)) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Please enter your user name.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Please enter your user name.");
             return;
         } else if (TextUtils.isEmpty(previousPassword)) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Please enter your previous password.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Please enter your previous password.");
             return;
         } else if (!userName.equalsIgnoreCase(Util.fetchUserClass(mContext).getName())) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Please enter a correct user name.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Please enter a correct user name.");
             return;
         } else if (!previousPassword.contentEquals(Util.fetchUserClass(mContext).getPassword())) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Previous password is not correct.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Previous password is not correct.");
             return;
         } else if (TextUtils.isEmpty(password)) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Please enter a password.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Please enter a password.");
             return;
         } else if (TextUtils.isEmpty(confirmPass)) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Confirm Password empty.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Confirm Password empty.");
             return;
         } else if (password.length() < 8) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Password is too short.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Password is too short.");
             return;
         } else if (!Util.isPasswordValid(password)) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Password should have atleast one alphabet, one number and one special character.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Password should have atleast one alphabet, one number and one special character.");
             return;
         } else if (!password.contentEquals(confirmPass)) {
-            Util.showMessageWithOk(ActivityChangePass.this, "Entered Passwords do not match.");
+            Util.showMessageWithOk(ChangePassActivity.this, "Entered Passwords do not match.");
             return;
         }
 

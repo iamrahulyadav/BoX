@@ -20,7 +20,7 @@ import com.aakriti.box.util.Util;
  * Created by ritwik on 06-05-2018.
  */
 
-public class ActivityCreateAppliance extends AppCompatActivity {
+public class CreateApplianceActivity extends AppCompatActivity {
 
     private Context mContext;
     private EditText et_ApplianceName;
@@ -41,7 +41,7 @@ public class ActivityCreateAppliance extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_appliances);
-        mContext = ActivityCreateAppliance.this;
+        mContext = CreateApplianceActivity.this;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Appliance");
         et_ApplianceName = (EditText) findViewById(R.id.et_ApplianceName);
@@ -74,11 +74,11 @@ public class ActivityCreateAppliance extends AppCompatActivity {
 
         String applianceName = et_ApplianceName.getText().toString().trim();
         if (TextUtils.isEmpty(applianceName)) {
-            Util.showMessageWithOk(ActivityCreateAppliance.this, "Please enter Appliance Name");
+            Util.showMessageWithOk(CreateApplianceActivity.this, "Please enter Appliance Name");
             return;
         } else if (rg_image.getCheckedRadioButtonId() == -1) {
             // no radio buttons are checked
-            Util.showMessageWithOk(ActivityCreateAppliance.this, "Please select an Image");
+            Util.showMessageWithOk(CreateApplianceActivity.this, "Please select an Image");
             return;
         } else {
             // one of the radio buttons is checked
@@ -89,7 +89,7 @@ public class ActivityCreateAppliance extends AppCompatActivity {
                 @Override
                 public void onSubmit() {
                     Intent returnIntent = new Intent();
-                    returnIntent.putExtra(ActivitySetUpRoom.EXTRA_INTENT, appliance);
+                    returnIntent.putExtra(SetupRoomActivity.EXTRA_INTENT, appliance);
                     setResult(Activity.RESULT_OK, returnIntent);
                     finish();
                 }

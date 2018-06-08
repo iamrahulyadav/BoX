@@ -13,7 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +33,7 @@ import java.util.UUID;
  * Created by ritwik on 07-05-2018.
  */
 
-public class ActivityManageRoom extends AppCompatActivity {
+public class ManageRoomActivity extends AppCompatActivity {
 
     private Context mContext;
 
@@ -74,8 +73,8 @@ public class ActivityManageRoom extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_control);
-        mContext = ActivityManageRoom.this;
+        setContentView(R.layout.activity_manage_room);
+        mContext = ManageRoomActivity.this;
 
         lv_appliances = (ListView) findViewById(R.id.lv_appliances);
         tv_data = (TextView) findViewById(R.id.tv_data);

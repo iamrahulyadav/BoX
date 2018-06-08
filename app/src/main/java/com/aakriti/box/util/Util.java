@@ -173,7 +173,9 @@ public class Util {
      * one alphabet, 0ne number and one special character.
      **/
     public static boolean isPasswordValid(String text) {
-
-        return text.matches("^([a-zA-Z+]+[0-9+]+[&@!#+]+)$");
+        // REG EXP ===>> ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$ (Works-
+        //  but need to remove Uppercase expresion)
+        // REG EXP ===>> ^([a-zA-Z+]+[0-9+]+[&@!#+]+)$ (This is bogus)
+        return text.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
     }
 }

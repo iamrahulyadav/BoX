@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -31,11 +30,11 @@ import java.util.Set;
  * Created by ritwik.rai on 04-04-2018.
  */
 
-public class ActivityAddRoom extends AppCompatActivity {
+public class AddRoomActivity extends AppCompatActivity {
 
     private Context mContext;
 
-    private String LOG_TAG = "ActivityAddRoom";
+    private String LOG_TAG = "AddRoomActivity";
     private int REQUEST_ENABLE_BT = 99;
     private int REQUEST_PAIR_BT = 77;
     private BluetoothAdapter mBluetoothAdapter;
@@ -61,16 +60,16 @@ public class ActivityAddRoom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_rooms);
+        setContentView(R.layout.activity_add_rooms);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Add Room");
-        mContext = ActivityAddRoom.this;
+        mContext = AddRoomActivity.this;
         lv_rooms = (ListView) findViewById(R.id.lv_rooms);
         lv_pairedDevices = (ListView) findViewById(R.id.lv_pairedDevices);
         tv_pairedDeviceMessage = (TextView) findViewById(R.id.tv_pairedDeviceMessage);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        mProgressDialog = new ProgressDialog(ActivityAddRoom.this);
+        mProgressDialog = new ProgressDialog(AddRoomActivity.this);
         mProgressDialog.setCancelable(true);
         mProgressDialog.setMessage("Looking for available Devices! Please wait...");
         enableBluetoothOnDevice();
@@ -81,7 +80,7 @@ public class ActivityAddRoom extends AppCompatActivity {
                 //PAIR DEVICE
                 //pairDevice(unpairedBTDevices.get(i));
                 // pairDevice2(unpairedBTDevices.get(i));
-                Intent intent = new Intent(mContext, ActivitySetUpRoom.class);
+                Intent intent = new Intent(mContext, SetupRoomActivity.class);
                 intent.putExtra("room", rooms.get(i));
                 startActivity(intent);
             }

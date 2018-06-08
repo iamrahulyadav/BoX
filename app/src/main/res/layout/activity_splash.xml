@@ -50,6 +50,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="13dp"
+        android:layout_marginRight="7dp"
         android:shadowColor="#ddcccccc"
         android:shadowDx="-1"
         android:shadowDy="-1"

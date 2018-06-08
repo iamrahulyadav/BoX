@@ -1,4 +1,4 @@
-package com.aakriti.box;
+package com.aakriti.box.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -6,22 +6,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
+import com.aakriti.box.R;
+
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * Created by ritwik on 15-04-2018.
  */
 
-public class ActivityRoomSetting extends AppCompatActivity {
+public class RoomSettingActivity extends AppCompatActivity {
     private Context mContext;
     private TextView tv_bluetooth_device;
     private EditText et_key;
@@ -33,7 +32,7 @@ public class ActivityRoomSetting extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_setting);
-        mContext = ActivityRoomSetting.this;
+        mContext = RoomSettingActivity.this;
         btn_pair = (Button) findViewById(R.id.btn_pair);
         et_key = (EditText) findViewById(R.id.et_key);
         tv_bluetooth_device = (TextView) findViewById(R.id.tv_bluetooth_device);

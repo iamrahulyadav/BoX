@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * Created by ritwik on 15-04-2018.
  */
 
-public class ActivitySetUpRoom extends AppCompatActivity {
+public class SetupRoomActivity extends AppCompatActivity {
 
 
     private Context mContext;
@@ -51,7 +51,7 @@ public class ActivitySetUpRoom extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_room);
-        mContext = ActivitySetUpRoom.this;
+        mContext = SetupRoomActivity.this;
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("SetUp Room");
@@ -82,7 +82,7 @@ public class ActivitySetUpRoom extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 // Toast.makeText(mContext, "" + appliances.get(i).getApplianceName(), Toast.LENGTH_SHORT).show();
-             /*   Intent intent = new Intent(mContext, ActivitySetUpRoom.class);
+             /*   Intent intent = new Intent(mContext, SetupRoomActivity.class);
                 startActivity(intent);*/
             }
         };
@@ -93,10 +93,10 @@ public class ActivitySetUpRoom extends AppCompatActivity {
     public void onSaveClick(View view) {
         String roomName = et_roomName.getText().toString().trim();
         if (TextUtils.isEmpty(roomName)) {
-            Util.showMessageWithOk(ActivitySetUpRoom.this, "Please enter the room name.");
+            Util.showMessageWithOk(SetupRoomActivity.this, "Please enter the room name.");
             return;
         } else if (appliances.size() < 1) {
-            Util.showMessageWithOk(ActivitySetUpRoom.this, "Please add an Appliance.");
+            Util.showMessageWithOk(SetupRoomActivity.this, "Please add an Appliance.");
             return;
         }
 
@@ -110,7 +110,7 @@ public class ActivitySetUpRoom extends AppCompatActivity {
         rooms.add(room);
         Util.saveRooms(mContext, rooms);
         Toast.makeText(mContext, "Room Configured Successfully", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(mContext, ActivityRoomAccess.class);
+        Intent intent = new Intent(mContext, DashboardActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
@@ -120,10 +120,10 @@ public class ActivitySetUpRoom extends AppCompatActivity {
     public void onAddApplianceClick(View view) {
 
         if (appliances.size() == 8) {
-            Util.showMessageWithOk(ActivitySetUpRoom.this, "You have already added 8 Appliances");
+            Util.showMessageWithOk(SetupRoomActivity.this, "You have already added 8 Appliances");
             return;
         } else {
-            Intent intent = new Intent(mContext, ActivityCreateAppliance.class);
+            Intent intent = new Intent(mContext, CreateApplianceActivity.class);
             startActivityForResult(intent, REQ_CODE_ADD_APPLIANCE);
         }
 

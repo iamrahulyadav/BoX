@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * Created by ritwik on 03-05-2018.
  */
 
-public class ActivityRoomAccess extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
 
     private Context mContext;
     private ListView lv_rooms;
@@ -34,7 +34,7 @@ public class ActivityRoomAccess extends AppCompatActivity {
     private RoomAdapter roomAdapter;
     private FloatingActionButton fab_add_room;
     private BluetoothAdapter mBluetoothAdapter;
-    private String LOG_TAG = "ActivityRoomAccess";
+    private String LOG_TAG = "DashboardActivity";
     private int REQUEST_ENABLE_BT = 99;
     private TextView tv_NoRooms;
     private TextView tv_homeName;
@@ -43,8 +43,8 @@ public class ActivityRoomAccess extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rooms);
-        mContext = ActivityRoomAccess.this;
+        setContentView(R.layout.activity_dashboard);
+        mContext = DashboardActivity.this;
         lv_rooms = (ListView) findViewById(R.id.lv_rooms);
         tv_NoRooms = (TextView) findViewById(R.id.tv_NoRooms);
         tv_homeName = (TextView) findViewById(R.id.tv_homeName);
@@ -71,7 +71,7 @@ public class ActivityRoomAccess extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     // Toast.makeText(mContext, "BluetoothName: " + rooms.get(i).getBluetoothNameDefault(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(mContext, ActivityManageRoom.class);
+                    Intent intent = new Intent(mContext, ManageRoomActivity.class);
                     intent.putExtra("room", rooms.get(i));
                     startActivity(intent);
 
@@ -82,7 +82,7 @@ public class ActivityRoomAccess extends AppCompatActivity {
             /*Util.showCallBackMessageWithOkCancel(mContext, "No Rooms Found!\n\nPress OK to add one  OR\nPress CANCEL to exit.", new AlertDialogCallBack() {
                 @Override
                 public void onSubmit() {
-                   *//* Intent intent = new Intent(mContext, ActivityAddRoom.class);
+                   *//* Intent intent = new Intent(mContext, AddRoomActivity.class);
                     startActivity(intent);*//*
                 }
 
@@ -93,13 +93,13 @@ public class ActivityRoomAccess extends AppCompatActivity {
             });*/
             tv_header.setVisibility(View.INVISIBLE);
             tv_NoRooms.setVisibility(View.VISIBLE);
-            Util.showMessageWithOk(ActivityRoomAccess.this, "No Rooms Found!\n\nPress Add button to add one");
+            Util.showMessageWithOk(DashboardActivity.this, "No Rooms Found!\n\nPress Add button to add one");
         }
 
         fab_add_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ActivityAddRoom.class);
+                Intent intent = new Intent(mContext, AddRoomActivity.class);
                 startActivity(intent);
             }
         });
