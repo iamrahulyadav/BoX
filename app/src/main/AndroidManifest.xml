@@ -71,6 +71,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.AdminDashboardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <receiver android:name=".activity.AddRoomActivity$PairingRequest">
             <intent-filter>

@@ -22,7 +22,7 @@ import com.aakriti.box.util.Util;
 public class SigninActivity extends AppCompatActivity {
 
     private EditText input_username, input_password;
-    private Button btn_login, btn_register;
+    private Button btn_login, btn_register, btn_adminLogin;
     private CheckBox chbx_autoLogin;
     private TextView tv_forgot_pass;
     private Context mContext;
@@ -36,6 +36,7 @@ public class SigninActivity extends AppCompatActivity {
         input_password = (EditText) findViewById(R.id.input_password);
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_register = (Button) findViewById(R.id.btn_register);
+        btn_adminLogin = (Button) findViewById(R.id.btn_adminLogin);
         chbx_autoLogin = (CheckBox) findViewById(R.id.chbx_autoLogin);
         tv_forgot_pass = (TextView) findViewById(R.id.tv_forgot_pass);
 
@@ -47,19 +48,19 @@ public class SigninActivity extends AppCompatActivity {
                     String userName = input_username.getText().toString().trim();
                     String password = input_password.getText().toString().trim();
                     if (TextUtils.isEmpty(userName)) {
-                        Util.showMessageWithOk(SigninActivity.this, "Please enter your userName");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter your userName.");
                         return;
                     } else if (TextUtils.isEmpty(password)) {
-                        Util.showMessageWithOk(SigninActivity.this, "Please enter your password");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter your password.");
                         return;
                     } else if (password.length() < 8) {
-                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct password");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct password.");
                         return;
                     } else if (!userName.equalsIgnoreCase(userClass.getName())) {
-                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct user name");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct user name.");
                         return;
                     } else if (!password.contentEquals(userClass.getPassword())) {
-                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct password");
+                        Util.showMessageWithOk(SigninActivity.this, "Please enter the correct password.");
                         return;
                     }
                     // Save AutoLogin state
@@ -87,6 +88,34 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
 
+        btn_adminLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userName = input_username.getText().toString().trim();
+                String password = input_password.getText().toString().trim();
+                if (TextUtils.isEmpty(userName)) {
+                    Util.showMessageWithOk(SigninActivity.this, "Please enter admin user name.");
+                    return;
+                } else if (TextUtils.isEmpty(password)) {
+                    Util.showMessageWithOk(SigninActivity.this, "Please enter admin password.");
+                    return;
+                } else if (!userName.contentEquals("admin")) {
+                    Util.showMessageWithOk(SigninActivity.this, "Please enter correct admin user name.");
+                    return;
+                } else if (!password.contentEquals("nimad4_ons")) {
+                    Util.showMessageWithOk(SigninActivity.this, "Please enter correct admin password.");
+                    return;
+                }
+
+                // Correct username and Password ===>> ADMIN LOGIN
+                // Credentials Verified
+                Intent intent = new Intent(mContext, AdminDashboardActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                //finish();
+
+            }
+        });
         tv_forgot_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
