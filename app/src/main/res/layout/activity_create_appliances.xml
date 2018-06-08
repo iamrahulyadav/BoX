@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="13dp">
+
+
+    <TextView
+        style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Appliance"
+        android:textColor="@color/grey_dark" />
+
+    <EditText
+        android:id="@+id/et_ApplianceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="21dp"
+        android:background="@color/transparent"
+        android:hint="Enter Appliance Name"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:textAppearance="?android:textAppearance"
+        android:textColor="@color/grey_dark" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/grey_medium" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_large" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/grey_soft" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="13dp"
+        android:text="Select Image"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="@color/colorPrimaryLight"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/rg_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_border_box"
+        android:paddingBottom="3dp"
+        android:paddingLeft="13dp"
+        android:paddingTop="3dp">
+
+        <RadioButton
+            android:id="@+id/rb_bulb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_bulb"
+            android:scaleX="0.75"
+            android:scaleY="0.75" />
+
+        <RadioButton
+            android:id="@+id/rb_plug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_plug"
+            android:scaleX="0.75"
+            android:scaleY="0.75" />
+
+        <RadioButton
+            android:id="@+id/rb_fan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_fan"
+            android:scaleX="0.75"
+            android:scaleY="0.75" />
+
+        <RadioButton
+            android:id="@+id/rb_power_chord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_power_chord"
+            android:scaleX="0.75"
+            android:scaleY="0.75" />
+
+
+    </RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/blue_btn_rectangle_bg"
+        android:onClick="onSaveClick"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textAppearance="?android:textAppearance"
+        android:textColor="@color/white" />
+
+</LinearLayout>

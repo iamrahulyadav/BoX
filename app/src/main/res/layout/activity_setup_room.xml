@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="13dp"
+    android:weightSum="3">
+
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="SetUp Room"
+        android:textAppearance="?android:textAppearance"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />-->
+
+    <LinearLayout
+        android:id="@+id/ll_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/grey_soft" />
+
+        <EditText
+            android:id="@+id/et_roomName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter room name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Hint: eg Living Room, Bed Room, Kitchen etc."
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/grey_medium"
+            android:textSize="11sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="7dp"
+            android:background="@color/grey_soft" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_large" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="4"
+            android:text="Press ADD APPLIANCE button to add the appliance present in the room.\nIt could be a bulb, fan, Plug Point etc."
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/material_green_900"
+            android:textSize="11sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="Add Appliance"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="11sp" />
+
+            <ImageButton
+                android:id="@+id/ib_add_appliance"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/round_shape"
+                android:onClick="onAddApplianceClick"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_add" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_appliances"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@color/grey_soft"
+            android:padding="5dp"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/et_firstEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter appliance name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/et_secondEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter appliance name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/et_thirdEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter appliance name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/et_fourthEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter appliance name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/et_fifthEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter appliance name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/et_sixthEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter appliance name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/et_seventhEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter appliance name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/et_eighthEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/blue_border_box"
+            android:hint="Enter appliance name"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textAppearance="?android:textAppearance"
+            android:textColorHint="@color/material_cyan_200"
+            android:visibility="gone" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_main_layout"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/blue_btn_rectangle_bg"
+            android:onClick="onSaveClick"
+            android:text="Save"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="13dp">
+
+    <TextView
+        android:id="@+id/tv_homeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:gravity="center_horizontal"
+        android:text="Welcome to My Smart Home"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/material_green_800"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_homeName"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="13dp"
+        android:text="Connect To Your Room"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/tv_NoRooms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_header"
+        android:layout_marginTop="13dp"
+        android:text="No Rooms Found\nPress Add button to add one."
+        android:textAppearance="?android:textAppearance"
+        android:textColor="@color/material_red_500"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/lv_rooms"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_header" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add" />
+
+
+</RelativeLayout>

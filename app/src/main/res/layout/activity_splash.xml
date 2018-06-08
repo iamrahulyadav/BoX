@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E1F5FE">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#216CA5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_splash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#ddcccccc"
+            android:shadowDx="-1"
+            android:shadowDy="-1"
+            android:shadowRadius="2"
+            android:text=".BoX"
+            android:textColor="#0288D1"
+            android:textSize="15pt"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/tv_subText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#ddcccccc"
+            android:shadowDx="-1"
+            android:shadowDy="-1"
+
+            android:shadowRadius="2"
+            android:text="Smart touch to your life."
+            android:textColor="#039BE5"
+            android:textSize="11pt"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="13dp"
+        android:shadowColor="#ddcccccc"
+        android:shadowDx="-1"
+        android:shadowDy="-1"
+        android:shadowRadius="2"
+        android:text="&#xa9; powered by Akriti"
+        android:textColor="#039BE5"
+        android:textSize="15sp"
+        android:textStyle="bold|italic" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_alignParentBottom="true"
+        android:background="#216CA5" />
+
+</RelativeLayout>
