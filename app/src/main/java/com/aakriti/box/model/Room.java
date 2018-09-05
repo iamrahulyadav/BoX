@@ -2,6 +2,8 @@ package com.aakriti.box.model;
 
 import android.os.ParcelUuid;
 
+import com.aakriti.box.R;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -26,6 +28,8 @@ public class Room implements Serializable {
     private ParcelUuid[] bluetooth_uuids;
 
     private int bluetooth_rssi;
+
+    private int imageId = R.drawable.ic_home;
 
 
     private ArrayList<Appliance> appliances = new ArrayList<>();
@@ -100,5 +104,13 @@ public class Room implements Serializable {
 
     public void setAppliances(ArrayList<Appliance> appliances) {
         this.appliances = appliances;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 }

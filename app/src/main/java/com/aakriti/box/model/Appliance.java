@@ -11,6 +11,7 @@ public class Appliance implements Serializable {
     private String wattage;
     private String resistance;
     private int imageId;
+    private int port=0;
     private boolean isOn = false;
 
     public String getApplianceName() {
@@ -43,6 +44,14 @@ public class Appliance implements Serializable {
 
     public void setImageId(int imageId) {
         this.imageId = imageId;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 
     public boolean isOn() {

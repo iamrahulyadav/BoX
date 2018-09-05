@@ -112,6 +112,7 @@ public class AddRoomActivity extends AppCompatActivity {
                 FoundBTDevicesAdapter adapter = new FoundBTDevicesAdapter(mContext, getArrayOfAlreadyPairedBluetoothDevices());
                 lv_pairedDevices.setAdapter(adapter);
                 //lv_pairedDevices.setClickable(false);
+                lv_pairedDevices.setOnItemClickListener(onItemClickListener);
 
             } else {
                 tv_pairedDeviceMessage.setVisibility(View.VISIBLE);
@@ -177,13 +178,18 @@ public class AddRoomActivity extends AppCompatActivity {
                     bluetoothObject.setBluetooth_rssi(rssi);
 
                     ArrayList<Room> pairedRooms = getArrayOfAlreadyPairedBluetoothDevices();
-                    for (Room searchDevice : pairedRooms) {
-                        if (!searchDevice.getMacID().equalsIgnoreCase(bluetoothObject.getMacID())) {
-                            rooms.add(bluetoothObject);
-                            unpairedBTDevices.add(device);
-                        }
-                    }
 
+                    if (pairedRooms != null && pairedRooms.size() > 0)
+                        for (Room searchDevice : pairedRooms) {
+                            if (!searchDevice.getMacID().equalsIgnoreCase(bluetoothObject.getMacID())) {
+                                rooms.add(bluetoothObject);
+                                unpairedBTDevices.add(device);
+                            }
+                        }
+                    else {
+                        rooms.add(bluetoothObject);
+                        unpairedBTDevices.add(device);
+                    }
 
                     // 1. Pass context and data to the custom adapter
                     FoundBTDevicesAdapter adapter = new FoundBTDevicesAdapter(getApplicationContext(), rooms);

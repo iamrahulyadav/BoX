@@ -1,5 +1,6 @@
 package com.aakriti.box.activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -7,10 +8,13 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -36,7 +40,7 @@ import java.util.UUID;
  * Created by ritwik on 07-05-2018.
  */
 
-public class ManageRoomActivity extends AppCompatActivity {
+public class ManageRoomActivityNew extends AppCompatActivity {
 
     private Context mContext;
 
@@ -65,8 +69,6 @@ public class ManageRoomActivity extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
 
-    private boolean isConnected = false;
-
 
     @Override
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
@@ -82,7 +84,7 @@ public class ManageRoomActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_room);
-        mContext = ManageRoomActivity.this;
+        mContext = ManageRoomActivityNew.this;
 
         lv_appliances = (ListView) findViewById(R.id.lv_appliances);
         tv_data = (TextView) findViewById(R.id.tv_data);
@@ -143,6 +145,13 @@ public class ManageRoomActivity extends AppCompatActivity {
         mProgressDialog.setMessage("Connecting! Please wait ...");
 
 
+        // =================================New Code =========================//
+
+        // Ask for location permission if not already allowed
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
+
     }
 
     public void onPowerOffClick(View view) {
@@ -152,7 +161,7 @@ public class ManageRoomActivity extends AppCompatActivity {
     }
 
     public void onPowerOnClick(View view) {
-        mConnectedThread.write("s");
+        mConnectedThread.write("S");
     }
 
     public void onRefreshClick(View view) {
@@ -188,7 +197,7 @@ public class ManageRoomActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
-        connectDevice();
+        //connectDevice();
     }
 
     @Override
@@ -265,7 +274,53 @@ public class ManageRoomActivity extends AppCompatActivity {
                 mmOutStream.write(msgBuffer);
             } catch (IOException e) {
                 e.printStackTrace();
-                Util.showCallBackMessageWithOkCallback(mContext, "Connection was lost.", new AlertDialogCallBack() {
+                Log.e(TAG, "...Error data send: " + e.getMessage() + "...");
+            }
+        }
+    }
+
+    private void connectDevice() {
+
+        showProgressDialog();
+        Log.e(TAG, "...onResume - try connect...");
+
+
+        // Set up a pointer to the remote node using it's address.
+        BluetoothDevice device = btAdapter.getRemoteDevice(room.getMacID());
+
+        // Two things are needed to make a connection:
+        //   A MAC address, which we got above.
+        //   A Service ID or UUID.  In this case we are using the
+        //     UUID for SPP.
+
+        try {
+            btSocket = createBluetoothSocket(device);
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorExit("Fatal Error", "In onResume() and socket create failed: " + e.getMessage() + ".");
+        }
+
+    /*try {
+      btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
+    } catch (IOException e) {
+      errorExit("Fatal Error", "In onResume() and socket create failed: " + e.getMessage() + ".");
+    }*/
+
+        // Discovery is resource intensive.  Make sure it isn't going on
+        // when you attempt to connect and pass your message.
+        btAdapter.cancelDiscovery();
+
+        // Establish the connection.  This will block until it connects.
+        Log.e(TAG, "...Connecting...");
+        try {
+            btSocket.connect();
+            hideProgressDialog();
+            Log.e(TAG, "....Connection ok...");
+        } catch (IOException e) {
+            e.printStackTrace();
+            try {
+                btSocket.close();
+                Util.showCallBackMessageWithOkCallback(ManageRoomActivityNew.this, "Could not establish connection.", new AlertDialogCallBack() {
                     @Override
                     public void onSubmit() {
                         finish();
@@ -276,53 +331,18 @@ public class ManageRoomActivity extends AppCompatActivity {
 
                     }
                 });
-                //  Toast.makeText(mContext, "Connection was lost", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "...Error data send: " + e.getMessage() + "...");
-            }
-        }
-    }
-
-    private void connectDevice() {
-        Log.e(TAG, "...onResume - try connect...");
-        BluetoothDevice device = btAdapter.getRemoteDevice(room.getMacID());
-        try {
-            btSocket = createBluetoothSocket(device);
-        } catch (IOException e) {
-            e.printStackTrace();
-            errorExit("Fatal Error", "In onResume() and socket create failed: " + e.getMessage() + ".");
-        }
-
-        // Discovery is resource intensive.  Make sure it isn't going on
-        // when you attempt to connect and pass your message.
-        btAdapter.cancelDiscovery();
-
-        // Establish the connection.  This will block until it connects.
-        Log.e(TAG, "...Connecting...");
-        Toast.makeText(mContext, "...Connecting...", Toast.LENGTH_LONG).show();
-        try {
-            btSocket.connect();
-            Toast.makeText(mContext, "Connected!", Toast.LENGTH_LONG).show();
-            Log.e(TAG, "....Connection ok...");
-        } catch (IOException e) {
-            e.printStackTrace();
-            try {
-                btSocket.close();
-                Toast.makeText(mContext, "Could not establish connection.", Toast.LENGTH_SHORT).show();
             } catch (IOException e2) {
                 e2.printStackTrace();
+
                 errorExit("Fatal Error", "In onResume() and unable to close socket during connection failure" + e2.getMessage() + ".");
             }
         }
+
         // Create a data stream so we can talk to server.
         Log.e(TAG, "...Create Socket...");
 
         mConnectedThread = new ConnectedThread(btSocket);
         mConnectedThread.start();
-/*
-        new Thread() {
-            public void run() {
-            }
-        }.start();*/
     }
 
     public void showProgressDialog() {

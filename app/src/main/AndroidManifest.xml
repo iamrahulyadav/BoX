@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
 
     <application
@@ -39,7 +38,13 @@
         <activity
             android:name=".activity.DashboardActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
+            android:theme="@style/AppActionBarTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.PAIRING_REQUEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.ChangePassActivity"
             android:screenOrientation="portrait"
@@ -70,11 +75,37 @@
             android:name=".activity.ManageRoomActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppActionBarTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.PAIRING_REQUEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activity.ManageRoomActivityNew"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppActionBarTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.RoomManageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activity.AdminDashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppActionBarTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.RoomEditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppActionBarTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <receiver android:name=".activity.AddRoomActivity$PairingRequest">
@@ -83,6 +114,7 @@
                 <action android:name="android.bluetooth.device.action.PAIRING_CANCEL" />
             </intent-filter>
         </receiver>
+        <service android:name=".service.ConnectDeviceService" />
 
     </application>
 
