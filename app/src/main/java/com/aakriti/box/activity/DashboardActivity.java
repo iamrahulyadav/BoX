@@ -105,13 +105,13 @@ public class DashboardActivity extends AppCompatActivity {
                     BluetoothDevice device = btAdapter.getRemoteDevice(rooms.get(i).getMacID());
 
                     device.createBond();*/
-                    /*Intent intent = new Intent(mContext, ManageRoomActivity.class);
+                    Intent intent = new Intent(mContext, ManageRoomActivity.class);
                     intent.putExtra("room", rooms.get(i));
-                    startActivity(intent);*/
+                    startActivity(intent);
 
-                    Intent serviceIntent = new Intent(mContext, ConnectDeviceService.class);
+                   /* Intent serviceIntent = new Intent(mContext, ConnectDeviceService.class);
                     serviceIntent.putExtra("MAC_ADDRESS", rooms.get(i).getMacID());
-                    startService(serviceIntent);
+                    startService(serviceIntent);*/
 
                 }
             });
@@ -121,7 +121,6 @@ public class DashboardActivity extends AppCompatActivity {
             tv_NoRooms.setVisibility(View.VISIBLE);
 
             Toast.makeText(mContext, "No Rooms Found!\n\nPress Add button to add one", Toast.LENGTH_LONG).show();
-            //Util.showMessageWithOk(DashboardActivity.this, "No Rooms Found!\n\nPress Add button to add one");
         }
 
         fab_add_room.setOnClickListener(new View.OnClickListener() {

@@ -20,6 +20,7 @@ import com.aakriti.box.util.AlertDialogCallBack;
 import com.aakriti.box.util.Util;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by ritwik on 15-04-2018.
@@ -106,6 +107,8 @@ public class SetupRoomActivity extends AppCompatActivity {
         Room room = new Room();
         room = roomExtra;
         room.setRoomName(roomName);
+        String uniqueID = UUID.randomUUID().toString();
+        room.setRoomID(uniqueID);
         room.setAppliances(appliances);
         rooms.add(room);
         Util.saveRooms(mContext, rooms);

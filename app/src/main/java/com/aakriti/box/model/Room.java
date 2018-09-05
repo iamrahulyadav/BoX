@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class Room implements Serializable {
 
+    private String roomID;
+
     private String roomName = "";
 
     private String macID = "";
@@ -31,6 +33,13 @@ public class Room implements Serializable {
 
     private int imageId = R.drawable.ic_home;
 
+    public String getRoomID() {
+        return roomID;
+    }
+
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
+    }
 
     private ArrayList<Appliance> appliances = new ArrayList<>();
 
